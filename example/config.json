@@ -1,0 +1,29 @@
+{
+  "mngr_config":
+  {
+    "sender_consumer_ip": "127.0.0.1",
+    "sender_consumer_port": 50020,
+    "agent_working_threads": 8,
+    "max_total_memory_gb": 2,
+    "max_size_http_message_mb": 50
+  },
+  "driver_config":
+  {
+    "pcap_device": "eth0",
+    "vec_ip_port_filter":
+    [
+      {"ip": "1.2.3.0/24","port": 80}
+    ]
+  },
+
+  "log_config":
+  {
+    "log_file_name": "monitor_log_file.log",
+    "log_files_path": "/home/dbpost/logs/engine/packets_monitoring/",
+    "file_max_size_mb": 10,
+    "num_of_files": 2,
+    "max_logs_dir_size_gb": 0.5,
+    "delta_time_hours_to_delete": 5,
+    "log_level": 3
+  }
+}
