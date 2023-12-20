@@ -26,4 +26,4 @@ jobs:
             - name: Build
               run: |
                 ./build.sh -g 1 -t ${{ matrix.build-type }} -b build/${{ matrix.build-type }}
-                ./build.sh -t ${{ matrix.build-type }} -b build/$${{ matrix.build-type }} -u 1
+                ./build.sh -t ${{ matrix.build-type }} -b build/${{ matrix.build-type }} -u 1
