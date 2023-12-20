@@ -1,0 +1,29 @@
+name: Http Monitoring PR FLow 
+
+on:
+    pull_request:
+      branches:
+      - main
+permissions: write-all
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container: ["ubuntu22-dev:latest"]
+                build-type: [Debug, Release]
+                compiler: [{ cxx: g++, c: gcc }]
+        timeout-minutes: 60
+        container:
+            image: ghcr.io/boazsade/${{ matrix.container }}
+            credentials:
+              username: ${{ github.repository_owner }}
+              password: ${{ secrets.GITHUB_TOKEN }}
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Build
+              run: |
+                ./build.sh -g 1 -t ${{ matrix.build-type }} -b build/${{ matrix.build-type }}
+                ./build.sh -t ${{ matrix.build-type }} -b build/${{ matrix.build-type }} -u 1
