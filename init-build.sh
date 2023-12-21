@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-BUILD_DIR_DOCKER=$PWD
-IMAGE=http_monitoring
-
 set -e
+SCRIPT=$(realpath "$0")
+SOURCES=$(dirname "${SCRIPT}")
 
-docker exec ${IMAGE} ${BUILD_DIR_DOCKER}/build.sh -b ${BUILD_DIR_DOCKER}/build-Release -t Release -g 1 && \
-	docker exec ${IMAGE} ${BUILD_DIR_DOCKER}/build.sh -b ${BUILD_DIR_DOCKER}/build-Debug -t Debug -g 1
+. ${SOURCES}/.build_settings.sh
+
+docker exec ${IMAGE} ${BUILD_DIR_DOCKER}/build.sh -b ${RELEASE_BUILD_DIR} -t Release -g 1 && \
+	docker exec ${IMAGE} ${BUILD_DIR_DOCKER}/build.sh -b ${DEBUG_BUILD_DIR} -t Debug -g 1
