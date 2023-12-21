@@ -1,0 +1,4 @@
+BUILD_DIR_DOCKER=$PWD
+IMAGE=http_monitoring
+DEBUG_BUILD_DIR=${BUILD_DIR_DOCKER}/build-debug
+RELEASE_BUILD_DIR=${BUILD_DIR_DOCKER}/build-release
