@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:24.10
 
 RUN apt-get -y update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install tzdata
